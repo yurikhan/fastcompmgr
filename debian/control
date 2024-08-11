@@ -1,0 +1,23 @@
+Source: fastcompmgr
+Section: x11
+Priority: optional
+Maintainer: Yuri Khan <yurivkhan@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+  libx11-dev,
+  libxcomposite-dev,
+  libxdamage-dev,
+  libxfixes-dev,
+  libxrender-dev,
+  pkg-config
+Standards-Version: 4.6.0
+Homepage: https://github.com/tycho-kirchner/fastcompmgr
+#Vcs-Browser: https://salsa.debian.org/debian/fastcompmgr
+#Vcs-Git: https://salsa.debian.org/debian/fastcompmgr.git
+Rules-Requires-Root: no
+
+Package: fastcompmgr
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: fast compositor for X
+ A fork of xcompmgr with a few improvements from compton
+ and some optimizations.

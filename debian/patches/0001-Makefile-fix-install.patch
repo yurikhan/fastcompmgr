@@ -1,0 +1,30 @@
+From: Yuri Khan <yuri.v.khan@gmail.com>
+Date: Sun, 11 Aug 2024 19:54:33 +0700
+Subject: Makefile: fix install
+
+---
+ Makefile | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7afedbb..398476c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,13 +14,12 @@ fastcompmgr: $(OBJS)
+ 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ install: fastcompmgr
+-	@cp -t ${PREFIX}/bin fastcompmgr
+-	@[ -d "${MANDIR}" ] \
+-	  && cp -t "${MANDIR}" fastcompmgr.1
++	install -Dt "${DESTDIR}${PREFIX}/bin" fastcompmgr
++	install -Dt "${DESTDIR}${MANDIR}" fastcompmgr.1
+ 
+ uninstall:
+-	@rm -f ${PREFIX}/fastcompmgr
+-	@rm -f ${MANDIR}/fastcompmgr.1
++	@rm -f ${DESTDIR}${PREFIX}/fastcompmgr
++	@rm -f ${DESTDIR}${MANDIR}/fastcompmgr.1
+ 
+ clean:
+ 	rm -f $(OBJS) fastcompmgr
